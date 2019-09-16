@@ -514,6 +514,15 @@ static int do_registration_axx5500(struct cs_devices_t *devices)
 
 static int do_registration_jetsontx2(struct cs_device_t *devices)
 {
+	enum { A57_0, A57_1, A57_2, A57_3 }
+	
+	cs_device_t rep, etr, etf, funnel_major, funnel_minor, funnel_bccplex, stm, tpiu; 
+
+	if (registration_verbose)
+		printf("CSDEMO: Registering Jetson TX2 CoreSight devices...\n");
+
+	cs_register_romtable(	
+
 	return 0;
 }
 
