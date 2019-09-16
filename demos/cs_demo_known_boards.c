@@ -512,6 +512,11 @@ static int do_registration_axx5500(struct cs_devices_t *devices)
     return 0;
 }
 
+static int do_registration_jetsontx2(struct cs_device_t *devices)
+{
+	return 0;
+}
+
 const struct board known_boards[] = {
     {
         .do_registration = do_registration_arndale,
@@ -537,7 +542,10 @@ const struct board known_boards[] = {
         .do_registration = do_registration_axx5500,
         .n_cpu = 16,
         .hardware = "LSI Axxia",
-    },
+    }, {
+	.do_registration = do_registration_jetsontx2,
+	.n_cpu = 4,
+	.hardware = "Jetson TX2",
     {}
 };
 
