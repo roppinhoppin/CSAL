@@ -519,7 +519,7 @@ static int do_registration_jetsontx2(struct cs_device_t *devices)
 
 	enum { A57_0, A57_1, A57_2, A57_3 }
 	
-	cs_device_t rep, etr, etf, funnel_major, funnel_minor, funnel_bccplex, stm, tpiu; 
+	cs_device_t rep, etr, etf, funnel_major, funnel_minor, funnel_bccplex, funnel_a57, stm, tpiu; 
 
 	if (registration_verbose)
 		printf("CSDEMO: Registering Jetson TX2 CoreSight devices...\n");
@@ -556,18 +556,26 @@ static int do_registration_jetsontx2(struct cs_device_t *devices)
 	if (registration_verbose)
 		printf("CSDEMO: Registering trace-bus connections...\n");
 	
-	/* funnels in coresight major */
-	funnel_major = cs_device_get(0x8010000);
+	/* funnels in A57 clusters */
+	funnel_a57 = cs_device_get(0x9010000);
 	cs_atb_register(cs_cpu_get_device(A57_0, CS_DEVCLASS_SOURCE), 0,
 			funnel_major, 0);
 	cs_atb_register(cs_cpu_get_device(A57_1, CS_DEVCLASS_SOURCE), 0,
 			funnel_major, 1);
 	cs_atb_register(cs_cpu_get_device(A57_2, CS_DEVCLASS_SOURCE), 0,
 			funnel_major, 2);
-	cs_atb_register(cs_cpu_get_device(A57_3, CS_DEVCLASS_SOURCE), 0,
+	cs_atb_register(cs_cpu_get_device(A57_0, CS_DEVCLASS_SOURCE), 0,
 			funnel_major, 3);
-	
 
+	/* setup for coresight major */
+	funnel_major = cs_device_get(0x8010000);
+       	stm = cs_device_get(0x8070000);	
+	etf = cs_device_get(0x8030000);
+	rep = cs_device_get(0x8040000);
+       	etr = cs_device_get(0x8050000);
+	tpiu = cs_device_get(0x8060000);
+
+		
 
 	return 0;
 }
