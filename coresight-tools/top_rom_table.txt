@@ -1,0 +1,91 @@
+@0x8000000    0x1ab 0x181 r2.0  ROM table
+@0x8010000    0x23b 0x908 r2.0  funnel                          in-ports:4
+@0x8020000    0x23b 0x906 r4.0  CTI                             channels:4 triggers:8
+@0x8030000    0x23b 0x961 r1.0  fifo                            TMC:ETF size:32768 memwidth:256
+@0x8040000    0x23b 0x909 r1.0  replicator                      out-ports:2
+@0x8050000    0x23b 0x961 r1.0  buffer                          TMC:ETR memwidth:128 wb:32
+@0x8060000    0x23b 0x912 r4.0  port                            TPIU
+@0x8070000    0x23b 0x962 r1.0  STM                            
+@0x87f0000    0x000 0x000 r0.0  unexpected CIDR: 0x00000000
+class:0
+@0x8800000    0x000 0x000 r0.0  ROM table
+@0x8810000    0x290 0x505 r0.0  unexpected CIDR: 0x05050505
+class:0
+@0x8820000    0x23b 0x908 r2.0  funnel                          in-ports:5
+@0x8900000    0x1b0 0x303 r0.0  unexpected CIDR: 0x03030303
+class:0
+@0x8a00000    0x23b 0x4b5 r0.0  ROM table
+@0x8a10000    0x23b 0xc15 r4.0  core-debug                     
+@0x8a18000    0x23b 0x906 r4.0  CTI                             channels:4 triggers:8
+@0x8a1c000    0x23b 0x931 r0.0  ETM                            
+@0x8b00000    0x23b 0x4b5 r0.0  ROM table
+@0x8b10000    0x23b 0xc15 r4.0  core-debug                     
+@0x8b18000    0x23b 0x906 r4.0  CTI                             channels:4 triggers:8
+@0x8b1c000    0x23b 0x931 r0.0  ETM                            
+@0x8c00000    0x23b 0x4b5 r0.0  ROM table
+@0x8c10000    0x23b 0xc15 r4.0  core-debug                     
+@0x8c18000    0x23b 0x906 r4.0  CTI                             channels:4 triggers:8
+@0x8c1c000    0x23b 0x931 r0.0  ETM                            
+@0x9000000    0x000 0x000 r0.0  ROM table
+@0x9010000    0x23b 0x908 r2.0  funnel                          in-ports:2
+@0x9400000    0x000 0x000 r0.0  ROM table
+@0x9410000    0x000 0x000 r0.0  unexpected CIDR: 0x00000000
+class:0
+@0x9420000    0x23b 0x906 r4.0  CTI                             channels:4 triggers:8
+@0x9430000    0x000 0x000 r0.0  unexpected CIDR: 0x00000000
+class:0
+@0x9440000    0x000 0x000 r0.0  unexpected CIDR: 0x00000000
+class:0
+@0x9510000    0x000 0x000 r0.0  unexpected CIDR: 0x00000000
+class:0
+@0x9520000    0x23b 0x906 r4.0  CTI                             channels:4 triggers:8
+@0x9530000    0x000 0x000 r0.0  unexpected CIDR: 0x00000000
+class:0
+@0x9540000    0x000 0x000 r0.0  unexpected CIDR: 0x00000000
+class:0
+@0x9800000    0x23b 0x4a2 r3.0  ROM table
+@0x9810000    0x23b 0xd07 r3.0  core-debug     Arm v8.0-A rev0  aff=0x80000100
+@0x9820000    0x23b 0x906 r4.0  CTI                             channels:4 triggers:8
+@0x9830000    0x23b 0x9d7 r3.0  PMU (core)     Arm PMU rev0     aff=0x80000100 counters:6 exported
+@0x9840000    0x23b 0x95e r3.0  ETM            Arm ETMv4 rev0   aff=0x80000100 pdsr=0x00000021 ETMv4.0 ts:64 bb cc min-ccit:4 retstack events:4 resources:14 addrcomp:4 ssc:1 pecomp:0 counters:2 seqstates:4 extin:110 extinsel:4
+@0x9910000    0x23b 0xd07 r3.0  core-debug     Arm v8.0-A rev0  aff=0x80000101
+@0x9920000    0x23b 0x906 r4.0  CTI                             channels:4 triggers:8
+@0x9930000    0x23b 0x9d7 r3.0  PMU (core)     Arm PMU rev0     aff=0x80000101 counters:6 exported
+@0x9940000    0x23b 0x95e r3.0  ETM            Arm ETMv4 rev0   aff=0x80000101 pdsr=0x00000021 ETMv4.0 ts:64 bb cc min-ccit:4 retstack events:4 resources:14 addrcomp:4 ssc:1 pecomp:0 counters:2 seqstates:4 extin:110 extinsel:4
+@0x9a10000    0x23b 0xd07 r3.0  core-debug     Arm v8.0-A rev0  aff=0x80000102
+@0x9a20000    0x23b 0x906 r4.0  CTI                             channels:4 triggers:8
+@0x9a30000    0x23b 0x9d7 r3.0  PMU (core)     Arm PMU rev0     aff=0x80000102 counters:6 exported
+@0x9a40000    0x23b 0x95e r3.0  ETM            Arm ETMv4 rev0   aff=0x80000102 pdsr=0x00000021 ETMv4.0 ts:64 bb cc min-ccit:4 retstack events:4 resources:14 addrcomp:4 ssc:1 pecomp:0 counters:2 seqstates:4 extin:110 extinsel:4
+@0x9b10000    0x23b 0xd07 r3.0  core-debug     Arm v8.0-A rev0  aff=0x80000103
+@0x9b20000    0x23b 0x906 r4.0  CTI                             channels:4 triggers:8
+@0x9b30000    0x23b 0x9d7 r3.0  PMU (core)     Arm PMU rev0     aff=0x80000103 counters:6 exported
+@0x9b40000    0x23b 0x95e r3.0  ETM            Arm ETMv4 rev0   aff=0x80000103 pdsr=0x00000021 ETMv4.0 ts:64 bb cc min-ccit:4 retstack events:4 resources:14 addrcomp:4 ssc:1 pecomp:0 counters:2 seqstates:4 extin:110 extinsel:4
+
+ATB topology detection
+@0x8010000    0x23b 0x908 r2.0  funnel                          in-ports:4 unlocked integration
+  0->0  @0x8030000    0x23b 0x961 r1.0  fifo                            TMC:ETF size:32768 memwidth:256 unlocked integration
+@0x8030000    0x23b 0x961 r1.0  fifo                            TMC:ETF size:32768 memwidth:256 unlocked integration
+  0->0  @0x8040000    0x23b 0x909 r1.0  replicator                      out-ports:2 unlocked integration
+@0x8040000    0x23b 0x909 r1.0  replicator                      out-ports:2 unlocked integration
+  0->0  @0x8050000    0x23b 0x961 r1.0  buffer                          TMC:ETR memwidth:128 wb:32 unlocked integration
+  1->0  @0x8060000    0x23b 0x912 r4.0  port                            TPIU unlocked integration
+@0x8050000    0x23b 0x961 r1.0  buffer                          TMC:ETR memwidth:128 wb:32 unlocked integration
+@0x8060000    0x23b 0x912 r4.0  port                            TPIU unlocked integration
+@0x8070000    0x23b 0x962 r1.0  STM                             unlocked integration
+  0->0  @0x8010000    0x23b 0x908 r2.0  funnel                          in-ports:4 unlocked integration
+@0x8820000    0x23b 0x908 r2.0  funnel                          in-ports:5 unlocked integration
+  0->2  @0x8010000    0x23b 0x908 r2.0  funnel                          in-ports:4 unlocked integration
+@0x8a1c000    0x23b 0x931 r0.0  ETM                             unlocked integration
+@0x8b1c000    0x23b 0x931 r0.0  ETM                             unlocked integration
+@0x8c1c000    0x23b 0x931 r0.0  ETM                             unlocked integration
+@0x9010000    0x23b 0x908 r2.0  funnel                          in-ports:2 unlocked integration
+  0->0  @0x8010000    0x23b 0x908 r2.0  funnel                          in-ports:4 unlocked integration
+@0x9840000    0x23b 0x95e r3.0  ETM            Arm ETMv4 rev0   aff=0x80000100 pdsr=0x00000021 ETMv4.0 ts:64 bb cc min-ccit:4 retstack events:4 resources:14 addrcomp:4 ssc:1 pecomp:0 counters:2 seqstates:4 extin:110 extinsel:4 unlocked integration
+  0->0  @0x9010000    0x23b 0x908 r2.0  funnel                          in-ports:2 unlocked integration
+@0x9940000    0x23b 0x95e r3.0  ETM            Arm ETMv4 rev0   aff=0x80000101 pdsr=0x00000021 ETMv4.0 ts:64 bb cc min-ccit:4 retstack events:4 resources:14 addrcomp:4 ssc:1 pecomp:0 counters:2 seqstates:4 extin:110 extinsel:4 unlocked integration
+  0->1  @0x9010000    0x23b 0x908 r2.0  funnel                          in-ports:2 unlocked integration
+@0x9a40000    0x23b 0x95e r3.0  ETM            Arm ETMv4 rev0   aff=0x80000102 pdsr=0x00000021 ETMv4.0 ts:64 bb cc min-ccit:4 retstack events:4 resources:14 addrcomp:4 ssc:1 pecomp:0 counters:2 seqstates:4 extin:110 extinsel:4 unlocked integration
+  0->1  @0x9010000    0x23b 0x908 r2.0  funnel                          in-ports:2 unlocked integration
+@0x9b40000    0x23b 0x95e r3.0  ETM            Arm ETMv4 rev0   aff=0x80000103 pdsr=0x00000021 ETMv4.0 ts:64 bb cc min-ccit:4 retstack events:4 resources:14 addrcomp:4 ssc:1 pecomp:0 counters:2 seqstates:4 extin:110 extinsel:4 unlocked integration
+  0->1  @0x9010000    0x23b 0x908 r2.0  funnel                          in-ports:2 unlocked integration
+ATB topology detection complete.

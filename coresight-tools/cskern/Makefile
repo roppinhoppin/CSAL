@@ -8,7 +8,8 @@
 #
 
 MOD=cskern
-KERNSRC=/lib/modules/$(shell uname -r)/build
+# KERNSRC=/lib/modules/$(shell uname -r)/build
+KERNSRC=/home/nvidia/kernel_workspace/32.2.1/public_sources/kernel/kernel-4.9
 KERNARCH=$(KERNSRC)/arch/arm64
 
 MODSRC=$(shell pwd)

@@ -514,6 +514,9 @@ static int do_registration_axx5500(struct cs_devices_t *devices)
 
 static int do_registration_jetsontx2(struct cs_device_t *devices)
 {
+	// CoreSight configurations for Jetson TX2
+	// Currently only supports CoreSight Major and A57 Cluster
+
 	enum { A57_0, A57_1, A57_2, A57_3 }
 	
 	cs_device_t rep, etr, etf, funnel_major, funnel_minor, funnel_bccplex, stm, tpiu; 
@@ -521,7 +524,50 @@ static int do_registration_jetsontx2(struct cs_device_t *devices)
 	if (registration_verbose)
 		printf("CSDEMO: Registering Jetson TX2 CoreSight devices...\n");
 
-	cs_register_romtable(	
+	cs_register_romtable(0x8000000);
+
+	if (registration_verbose)
+		printf("CSDEMO: Registering CPU Affinities...\n");
+
+	/* CTI affinities */
+	cs_device_set_affinity(cs_device_register(0x9820000), A57_0);	
+	cs_device_set_affinity(cs_device_register(0x9920000), A57_1);	
+	cs_device_set_affinity(cs_device_register(0x9A20000), A57_2);	
+	cs_device_set_affinity(cs_device_register(0x9B20000), A57_3);	
+
+	/* PMU affinities */
+	cs_device_set_affinity(cs_device_register(0x9830000), A57_0);
+	cs_device_set_affinity(cs_device_register(0x9930000), A57_1);
+	cs_device_set_affinity(cs_device_register(0x9A30000), A57_2);
+	cs_device_set_affinity(cs_device_register(0x9B30000), A57_3);
+
+	/* PTM affinities(ETM) */
+	cs_device_set_affinity(cs_device_register(0x9840000), A57_0);
+	cs_device_set_affinity(cs_device_register(0x9940000), A57_1);
+	cs_device_set_affinity(cs_device_register(0x9A40000), A57_2);
+	cs_device_set_affinity(cs_device_register(0x9B40000), A57_3);
+
+	/* DBG affinities */
+	cs_device_set_affinity(cs_device_register(0x9810000), A57_0);
+	cs_device_set_affinity(cs_device_register(0x9910000), A57_1);
+	cs_device_set_affinity(cs_device_register(0x9A10000), A57_2);
+	cs_device_set_affinity(cs_device_register(0x9B10000), A57_3);
+	
+	if (registration_verbose)
+		printf("CSDEMO: Registering trace-bus connections...\n");
+	
+	/* funnels in coresight major */
+	funnel_major = cs_device_get(0x8010000);
+	cs_atb_register(cs_cpu_get_device(A57_0, CS_DEVCLASS_SOURCE), 0,
+			funnel_major, 0);
+	cs_atb_register(cs_cpu_get_device(A57_1, CS_DEVCLASS_SOURCE), 0,
+			funnel_major, 1);
+	cs_atb_register(cs_cpu_get_device(A57_2, CS_DEVCLASS_SOURCE), 0,
+			funnel_major, 2);
+	cs_atb_register(cs_cpu_get_device(A57_3, CS_DEVCLASS_SOURCE), 0,
+			funnel_major, 3);
+	
+
 
 	return 0;
 }
