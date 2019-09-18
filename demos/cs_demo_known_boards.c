@@ -512,12 +512,12 @@ static int do_registration_axx5500(struct cs_devices_t *devices)
     return 0;
 }
 
-static int do_registration_jetsontx2(struct cs_device_t *devices)
+static int do_registration_jetsontx2(struct cs_devices_t *devices)
 {
 	// CoreSight configurations for Jetson TX2
 	// Currently only supports CoreSight Major and A57 Cluster
 
-	enum { A57_0, A57_1, A57_2, A57_3 }
+	enum { A57_0, A57_1, A57_2, A57_3 };
 	
 	cs_device_t rep, etr, etf, funnel_major, funnel_minor, funnel_bccplex, funnel_a57, stm, tpiu; 
 
@@ -585,7 +585,7 @@ static int do_registration_jetsontx2(struct cs_device_t *devices)
   cs_atb_register(stm, 0, funnel_major, 0);
   
   devices->itm = stm;
-  devices->etb = etf; 
+  devices->etb = etf;		/* core output through main etf */
 
   /* stm implementation */
   cs_stm_config_master(stm, 0, 0x0a000000);
@@ -596,9 +596,9 @@ static int do_registration_jetsontx2(struct cs_device_t *devices)
   /* There are A57x4 and denver cluster inside Parker SoC -
     so hardcode here (are we really need this?) */
   
-  for (i=0; i<6; i++) {
+  for (int i=0; i<6; i++) {
     devices->cpu_id[i] = cpu_id[i];
-	
+  }	
   return 0;
 }
 
@@ -631,7 +631,7 @@ const struct board known_boards[] = {
 	.do_registration = do_registration_jetsontx2,
 	.n_cpu = 4,
 	.hardware = "Jetson TX2",
-    {}
+    },
 };
 
 int setup_known_board(const struct board **board,
