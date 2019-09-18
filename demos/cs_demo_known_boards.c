@@ -559,25 +559,47 @@ static int do_registration_jetsontx2(struct cs_device_t *devices)
 	/* funnels in A57 clusters */
 	funnel_a57 = cs_device_get(0x9010000);
 	cs_atb_register(cs_cpu_get_device(A57_0, CS_DEVCLASS_SOURCE), 0,
-			funnel_major, 0);
+			funnel_a57, 0);
 	cs_atb_register(cs_cpu_get_device(A57_1, CS_DEVCLASS_SOURCE), 0,
-			funnel_major, 1);
+			funnel_a57, 1);
 	cs_atb_register(cs_cpu_get_device(A57_2, CS_DEVCLASS_SOURCE), 0,
-			funnel_major, 2);
+			funnel_a57, 2); // maybe 1 not 2
 	cs_atb_register(cs_cpu_get_device(A57_0, CS_DEVCLASS_SOURCE), 0,
-			funnel_major, 3);
+			funnel_a57, 3); // maybe 1 not 3
 
 	/* setup for coresight major */
 	funnel_major = cs_device_get(0x8010000);
-       	stm = cs_device_get(0x8070000);	
+	stm = cs_device_get(0x8070000); 	
 	etf = cs_device_get(0x8030000);
 	rep = cs_device_get(0x8040000);
-       	etr = cs_device_get(0x8050000);
+ 	etr = cs_device_get(0x8050000);
 	tpiu = cs_device_get(0x8060000);
 
-		
+  cs_atb_register(funnel_a57, 0, funnel_major, 0);
 
-	return 0;
+  /* implementing trace-bus connections according to coresight-tools/top_rom_table.txt */
+  cs_atb_register(funnel_major, 0, etf, 0);
+  cs_atb_register(etf, 0, rep, 0);
+  cs_atb_register(rep, 0, etr, 0);
+  cs_atb_register(rep, 1, tpiu, 0);
+  cs_atb_register(stm, 0, funnel_major, 0);
+  
+  devices->itm = stm;
+  devices->etb = etf; 
+
+  /* stm implementation */
+  cs_stm_config_master(stm, 0, 0x0a000000);
+  cs_stm_select_master(stm, 0);
+
+  /* Connect system CTI to devices (not implemented since im not sure how system CTI works for STM) */
+ 
+  /* There are A57x4 and denver cluster inside Parker SoC -
+    so hardcode here (are we really need this?) */
+  
+  for (i=0; i<6; i++) {
+    devices->cpu_id[i] = cpu_id[i];
+	
+  return 0;
 }
 
 const struct board known_boards[] = {
