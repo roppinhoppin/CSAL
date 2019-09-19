@@ -597,16 +597,16 @@ static int do_registration_jetsontx2(struct cs_devices_t *devices)
   cs_cti_connect_trigsrc(etf, CS_TRIGOUT_ETB_FULL,
 		  	 cs_cti_trigsrc(sys_cti, 0));
   cs_cti_connect_trigsrc(etf, CS_TRIGOUT_ETB_ACQCOMP,
-		  	 cs_cti_trig_src(sys_cti, 1));
+		  	 cs_cti_trigsrc(sys_cti, 1));
   cs_cti_connect_trigdst(cs_cti_trigdst(sys_cti, 0), etf,
 		 	 CS_TRIGIN_ETB_TRIGIN);
-  cs_cti_connect_trigdst(cs_cti_connect_trigdst(sys_cti, 1), etf,
+  cs_cti_connect_trigdst(cs_cti_trigdst(sys_cti, 1), etf,
 		 	 CS_TRIGIN_ETB_FLUSHIN);
   /* etr */
   cs_cti_connect_trigsrc(etr, CS_TRIGOUT_ETB_FULL,
-		 	 cs_cti_trigsrc(sys_cti, 2);
+		 	 cs_cti_trigsrc(sys_cti, 2));
   cs_cti_connect_trigsrc(etr, CS_TRIGOUT_ETB_ACQCOMP,
-	 		 cs_cti_trigsrc(sys_cti, 3);
+	 		 cs_cti_trigsrc(sys_cti, 3));
   cs_cti_connect_trigdst(cs_cti_trigdst(sys_cti, 2), etr,
 	 		 CS_TRIGIN_ETB_TRIGIN);
   cs_cti_connect_trigdst(cs_cti_trigdst(sys_cti, 3), etr,
