@@ -626,8 +626,8 @@ static int do_registration_jetsontx2(struct cs_devices_t *devices)
   /* There are A57x4 and denver cluster inside Parker SoC -
     so hardcode here (are we really need this?) */
   
-  for (int i = 0; i < 6; i++) {
-    devices->cpu_id[i] = cpu_id[i];
+  for (int i = 0; i < 4; i++) {
+  		devices->cpu_id[i] = 0xD07;
   }	
   return 0;
 }
